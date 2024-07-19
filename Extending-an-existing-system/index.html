@@ -10,14 +10,23 @@
                 body: document.getElementById("input").value
             })
         }
+        function addTracker() {
+            var data = document.createElement('p')
+            data.textContent = "I have been created"
+            document.body.appendChild(data)
+        }
     </script>
 </head>
 <body>
     <h1>My App</h1>
-    <div><input type="text" id="input">
+    <div>
+        <input type="text" id="input">
         <button onclick="sendData()">
             Send Data
         </button>
+    </div>
+    <div id="display">
+<!--        This div will contain the Tracker Views-->
     </div>
 </body>
 </html>
