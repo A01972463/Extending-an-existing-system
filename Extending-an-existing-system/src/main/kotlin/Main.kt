@@ -11,6 +11,8 @@ import java.io.File
 
 fun main(args: Array<String>) {
     embeddedServer(Netty, 8080) {
+        val inputs = mutableListOf<String>()    // Stores display items
+
         routing {
 //            Actual Homework Stuff
             get("/") {
@@ -29,10 +31,17 @@ fun main(args: Array<String>) {
                 val userInput = call.request.queryParameters["userInput"]
 
                 // Manipulate the input (for example, converting to uppercase)
-                val result = userInput?.uppercase() ?: ""
+                if (userInput != null) {
+                    val result = userInput.uppercase()
+                    inputs.add(result)
+                }
 
-                // Read the index.html file and replace the placeholder with the result
-                val htmlContent = File("ChatGPT.html").readText().replace("\${'$'}result", result)
+                // Read the index.html file
+                var htmlContent = File("ChatGPT.html").readText()
+
+                // Replace the placeholder with the accumulated results
+                val results = inputs.joinToString(separator = "<br>") { it }
+                htmlContent = htmlContent.replace("test", results)
 
                 // Respond with the modified HTML content
                 call.respondText(htmlContent, ContentType.Text.Html)
