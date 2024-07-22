@@ -1,4 +1,5 @@
 package org.example
 
-class ShipmentObserver {
-}
+open class ShipmentObserver{
+        fun notify() {}
+    }

@@ -1,5 +1,9 @@
 package org.example.ShipmentClasses
-import Shipment
 
-class BulkShipment: Shipment() {
+import org.example.Shipment
+
+class BulkShipment: Shipment {
+    override fun updateStatus(status: String) {
+        TODO("Not yet implemented")
+    }
 }
