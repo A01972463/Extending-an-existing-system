@@ -1,4 +1,4 @@
 package org.example
 
-class TrackerViewHelper {
+class TrackerViewHelper: ShipmentObserver() {
 }
